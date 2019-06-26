@@ -82,12 +82,10 @@ public class ShaderUtils {
 
     public static void checkGlError(String label) {
         int error = GLES20.glGetError();
-        Log.e(TAG, label + ": glError " + error);
-
-        // while ((error = GLES20.glGetError()) != GLES20.GL_NO_ERROR) {
-        //     Log.e(TAG, label + ": glError " + error);
-        //     throw new RuntimeException(label + ": glError " + error);
-        // }
+        while ((error = GLES20.glGetError()) != GLES20.GL_NO_ERROR) {
+            Log.e(TAG, label + ": glError " + error);
+            throw new RuntimeException(label + ": glError " + error);
+        }
     }
 
 }
